@@ -1,7 +1,11 @@
-const Previewer = () => {
+interface Props {
+  markdown: string;
+}
+
+const Previewer = ({ markdown }: Props) => {
   return (
     <>
-      <textarea id="previewer"></textarea>
+      <textarea id="previewer" value={markdown}></textarea>
     </>
   );
 };
