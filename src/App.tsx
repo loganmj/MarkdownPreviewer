@@ -14,8 +14,10 @@ function App() {
 
   return (
     <>
-      <Editor onTextChange={handleEditorTextChange}></Editor>
-      <Previewer markdown={markdown}></Previewer>
+      <div className="container">
+        <Editor onTextChange={handleEditorTextChange}></Editor>
+        <Previewer markdown={markdown}></Previewer>
+      </div>
     </>
   );
 }

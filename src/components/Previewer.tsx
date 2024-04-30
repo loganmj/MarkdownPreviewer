@@ -1,3 +1,5 @@
+import ReactMarkdown from "react-markdown";
+
 interface Props {
   markdown: string;
 }
@@ -5,7 +7,9 @@ interface Props {
 const Previewer = ({ markdown }: Props) => {
   return (
     <>
-      <textarea id="previewer" value={markdown}></textarea>
+      <div id="previewer">
+        <ReactMarkdown>{markdown}</ReactMarkdown>
+      </div>
     </>
   );
 };

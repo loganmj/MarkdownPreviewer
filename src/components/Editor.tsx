@@ -1,4 +1,5 @@
 import { ChangeEvent, useState } from "react";
+import "./Editor.css";
 
 interface Props {
   onTextChange: (text: string) => void;
@@ -20,9 +21,11 @@ const Editor = ({ onTextChange }: Props) => {
 
   return (
     <>
-      <textarea id="editor" onChange={handleTextChange}>
-        {text}
-      </textarea>
+      <div id="container">
+        <textarea id="editor" onChange={handleTextChange}>
+          {text}
+        </textarea>
+      </div>
     </>
   );
 };
