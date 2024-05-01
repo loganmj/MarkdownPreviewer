@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import "./Editor.css";
 
 interface Props {
@@ -6,7 +6,24 @@ interface Props {
 }
 
 const Editor = ({ onTextChange }: Props) => {
-  const [text, setText] = useState("");
+  const onLoadText =
+    "#Heading1\n\n" +
+    "##Heading2\n\n" +
+    "[A link](www.google.com)\n\n" +
+    "`\\\\in-line code`\n\n" +
+    "```\\ a code block```\n\n" +
+    "1. A list item\n\n" +
+    "- An unordered list item\n\n" +
+    "> A blockquote\n\n" +
+    "![an image]()\n\n" +
+    "**bold text**";
+
+  const [text, setText] = useState(onLoadText);
+
+  useEffect(() => {
+    // Call the parent event handler
+    onTextChange(onLoadText);
+  }, []); // Empty dependency array ensures this effect runs only once
 
   // Handle text changing
   const handleTextChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
@@ -21,11 +38,12 @@ const Editor = ({ onTextChange }: Props) => {
 
   return (
     <>
-      <div id="container">
-        <textarea id="editor" onChange={handleTextChange}>
-          {text}
-        </textarea>
+      <div className="labelContainer">
+        <label id="editorLabel">Editor</label>
       </div>
+      <textarea id="editor" onChange={handleTextChange}>
+        {text}
+      </textarea>
     </>
   );
 };

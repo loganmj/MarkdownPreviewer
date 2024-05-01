@@ -1,4 +1,5 @@
-import ReactMarkdown from "react-markdown";
+import Markdown from "react-markdown";
+import "./Previewer.css";
 
 interface Props {
   markdown: string;
@@ -7,9 +8,10 @@ interface Props {
 const Previewer = ({ markdown }: Props) => {
   return (
     <>
-      <div id="previewer">
-        <ReactMarkdown>{markdown}</ReactMarkdown>
+      <div className="labelContainer">
+        <label>Preview</label>
       </div>
+      <Markdown className="markdownTextArea">{markdown}</Markdown>
     </>
   );
 };
